@@ -83,7 +83,7 @@ var tripModule = (function () {
   // globally accessible module methods
 
   var publicAPI = {
-
+    
     load: function () {
 
       // ~~~~~~~~~~~~~~~~~~~~~~~
@@ -101,7 +101,6 @@ var tripModule = (function () {
     removeFromCurrent: function (attraction) {
       currentDay.removeAttraction(attraction);
     },
-    currentDay: currentDay
 
   };
 
