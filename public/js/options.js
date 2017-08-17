@@ -32,18 +32,16 @@ $(function () {
   Promise.all([gettingHotels, gettingActivities, gettingRestaurants])
     .then((arrayOfOptions) => {
       const hotelArray = arrayOfOptions[0];
-      hotelArray.forEach(makeOption, $hotelSelect)
-      return arrayOfOptions
-    })
-    .then((arrayOfOptions) => {
       const activityArray = arrayOfOptions[1];
+      const restaurantArray = arrayOfOptions[2];
+
+      hotelArray.forEach(makeOption, $hotelSelect)
       activityArray.forEach(makeOption, $activitySelect)
+      restaurantArray.forEach(makeOption, $restaurantSelect)
+
       return arrayOfOptions
     })
-    .then((arrayOfOptions) => {
-      const restaurantArray = arrayOfOptions[2];
-      restaurantArray.forEach(makeOption, $restaurantSelect)
-    })
+    .catch(console.log)
 
 
 
@@ -60,13 +58,13 @@ $(function () {
     .then((activities) => {
       attractionsModule.loadEnhancedAttractions('activities', activities);
     })
-  
+
   gettingRestaurants
     .then((restaurants)=>{
       attractionsModule.loadEnhancedAttractions('restaurants', restaurants);
     })
 
-  
+
   function makeOption(databaseAttraction) {
     var $option = $('<option></option>') // makes a new option tag
       .text(databaseAttraction.name)
@@ -81,7 +79,12 @@ $(function () {
     var id = $select.find(':selected').val();
     // get associated attraction and add it to the current day in the trip
     var attraction = attractionsModule.getByTypeAndId(type, id);
-    tripModule.addToCurrent(attraction);
+
+    sendDayData(attraction)
+      .then((attraction) => {
+        console.log(attraction)
+        tripModule.addToCurrent(attraction);
+      });
   });
 
 });

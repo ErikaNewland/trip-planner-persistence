@@ -33,7 +33,10 @@ ajaxRouter.get('/activities', (req, res, next)=>{
         .catch(next)
 })
 
-
+ajaxRouter.post('/day', (req, res, next) => {
+  console.log('req.body:', req.body);
+  res.send(req.body);
+});
 
 
 

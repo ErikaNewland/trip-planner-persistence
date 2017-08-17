@@ -1,5 +1,5 @@
 $(document).ready(() => {
-   
+
 
     getAll('hotels')  //promise of an array of hotels with all the hotel data on the database
         .then((hotels) => {
@@ -31,3 +31,14 @@ function getAll(event) {
         url: `/api/${event}`
     })
 }
+
+// function sendDayData(attraction){
+//   console.log(attraction);
+//   return $.ajax({
+//     method: 'POST',
+//     url: `/api/day`,
+//     data: {
+//       attractionType: attraction.type
+//     }
+//   })
+// }
