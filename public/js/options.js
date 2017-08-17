@@ -60,7 +60,7 @@ $(function () {
     })
 
   gettingRestaurants
-    .then((restaurants)=>{
+    .then((restaurants) => {
       attractionsModule.loadEnhancedAttractions('restaurants', restaurants);
     })
 
@@ -79,12 +79,9 @@ $(function () {
     var id = $select.find(':selected').val();
     // get associated attraction and add it to the current day in the trip
     var attraction = attractionsModule.getByTypeAndId(type, id);
+    tripModule.addToCurrent(attraction)
+    updateDay(tripModule.currentDay, attraction.type, attraction.id)
 
-    sendDayData(attraction)
-      .then((attraction) => {
-        console.log(attraction)
-        tripModule.addToCurrent(attraction);
-      });
   });
 
 });

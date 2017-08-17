@@ -58,6 +58,7 @@ var tripModule = (function () {
     if (days.length === 1) {
       currentDay = newDay;
     }
+    createDay(newDay.number)
     switchTo(newDay);
   }
 
@@ -99,7 +100,8 @@ var tripModule = (function () {
 
     removeFromCurrent: function (attraction) {
       currentDay.removeAttraction(attraction);
-    }
+    },
+    currentDay: currentDay
 
   };
 

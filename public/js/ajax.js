@@ -1,5 +1,13 @@
 $(document).ready(() => {
 
+    //only add day if there is no day 1
+    $.ajax({
+        method: 'POST',
+        url: `/api/day`,
+        data: {
+            dayNumber: 1
+        }
+    })
 
     getAll('hotels')  //promise of an array of hotels with all the hotel data on the database
         .then((hotels) => {
@@ -24,6 +32,29 @@ $(document).ready(() => {
 
 })
 
+function createDay(dayNumber) {
+    return $.ajax({
+        method: 'POST',
+        url: `/api/day`,
+        data: {
+            dayNumber: dayNumber
+        }
+    })
+}
+
+function updateDay(dayNumber, attractionType, attractionId) {
+    return $.ajax({
+        method: 'PUT',
+        url: `/api/day`,
+        data: {
+            dayNumber: dayNumber,
+            attractionId: attractionId,
+            attractionType: attractionType
+        }
+
+    })
+}
+
 function getAll(event) {
     return $.ajax({
         method: 'GET',
@@ -32,13 +63,3 @@ function getAll(event) {
     })
 }
 
-// function sendDayData(attraction){
-//   console.log(attraction);
-//   return $.ajax({
-//     method: 'POST',
-//     url: `/api/day`,
-//     data: {
-//       attractionType: attraction.type
-//     }
-//   })
-// }
