@@ -43,9 +43,14 @@ ajaxRouter.post('/day', (req, res, next) => {
 });
 
 ajaxRouter.put('/day', (req, res, next)=>{
-    console.log('request', req.body);
-    res.json(req.body)
-})
+    Day.update({
+      restaurantId: req.body.attractionId
+    }, {
+      where: {
+        dayID: req.body.dayNumber
+      }
+    });
+});
 
 
 
