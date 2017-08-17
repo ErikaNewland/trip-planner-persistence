@@ -80,7 +80,11 @@ $(function () {
     // get associated attraction and add it to the current day in the trip
     var attraction = attractionsModule.getByTypeAndId(type, id);
     tripModule.addToCurrent(attraction)
+<<<<<<< HEAD
     updateDay(tripModule.currentDay, attraction.type, attraction.id)  
+=======
+    updateDay(tripModule.currDay().number, attraction.type, attraction.id)
+>>>>>>> d441fd609980213774271307e0e4e684780f68bf
 
   });
 

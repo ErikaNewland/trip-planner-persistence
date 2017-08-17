@@ -51,7 +51,7 @@ var tripModule = (function () {
   // ~~~~~~~~~~~~~~~~~~~~~~~
     // `addDay` may need to take information now that we can persist days -- we want to display what is being sent from the DB
   // ~~~~~~~~~~~~~~~~~~~~~~~
-  function addDay () { 
+  function addDay () {
     if (this && this.blur) this.blur(); // removes focus box from buttons
     var newDay = dayModule.create({ number: days.length + 1 }); // dayModule
     days.push(newDay);
@@ -93,15 +93,22 @@ var tripModule = (function () {
     },
 
     switchTo: switchTo,
-
+    currDay: function(){
+      return currentDay
+    },
     addToCurrent: function (attraction) {
       currentDay.addAttraction(attraction);
     },
 
     removeFromCurrent: function (attraction) {
       currentDay.removeAttraction(attraction);
+<<<<<<< HEAD
     },
+=======
+    }
+>>>>>>> d441fd609980213774271307e0e4e684780f68bf
 
+    // currentDay: currentDay  /*returning back undefined but it is available on line 97, why?*/
   };
 
   return publicAPI;
